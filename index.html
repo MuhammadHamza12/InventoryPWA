@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Inventroy Management</title>
+    <!-- animated Css -->
+    <link rel="stylesheet" href="css/animated.css">
+      <!-- Material Icon CDN -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize CSS CDN -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Your custom styles -->
+      <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- Used as an example only to position the footer at the end of the page.
+    You can delete these styles or move it to your custom css file -->
+    
+    <script>
+       window.onload=function(){
+               setTimeout(()=>{
+                   document.querySelector('#loader').remove();
+                  //  document.querySelector('#loader').style.position='absolute';
+                document.querySelector('#head').style.visibility='visible';      
+                document.querySelector('#main').style.visibility='visible';
+                // document.querySelector('#foot').style.visibility='visible';
+              },1500) 
+       }
+    
+    </script>
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        }
+      main {
+        flex: 1 0 auto;
+      }
+      .mars{
+            margin-bottom: -120px;
+            opacity: 0.4;
+        }
+      .color{
+        background-color: gray;
+      }
+      .textcolor{
+          color: red
+      }
+     .back{
+       background-color: red;
+     }
+     #pad{
+            padding-top: 120px;
+        }
+       
+    </style>
+  </head>
+  <body>
+      <div style="text-align:center;" id="loader">
+          <img class="responsive-img" src="img/load4.gif" alt="#loader" >
+      </div>
+       
+    <header id="head" style="visibility:hidden"  >
+      <nav class="cyan">
+        <div class="nav-wrapper color ">
+            <div class="container">
+                <a href="#" class="brand-logo bounceIn animated"><i class="material-icons  ">shopping_basket</i>Product's</a>
+                <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                  <!-- <div id="pad" > -->
+                    <li >         
+                        <a class="waves-effect waves-light btn back modal-trigger" href="#modal1">Admin</a>
+                     
+                    </li>
+                    <!-- </div> -->
+                  </ul>
+                  <ul class="side-nav" id="mobile-menu">
+                    <li>
+                      <div class="userView">
+                        <div class="background mars">
+                          <img class="white-text"src="img/inventory.png" width="280px" height="400px" alt="">
+                        </div>
+                      </div>
+                    </li>
+                    <li>  
+                      <a class="waves-effect waves-light btn back modal-trigger" href="#modal1">Admin</a>
+                      <!-- <a class="waves-effect waves-light btn back">Admin</a> -->
+      </li>  
+                </ul>
+              </div>
+              
+            </div>
+          </nav>
+        </header>
+        <main id="main" style="visibility:hidden"  >
+          <!-- Your content here -->
+      <div class="container">
+        <div class="row">
+            <div class="col s12">
+              <h5>Product Details</h5>
+              
+              
+              <input placeholder="Check Product Availaiblility" onkeyup="filteritems()" id="Spname" type="text" class="validate">
+                <div id="record" >
+
+                </div>     
+                
+              <!-- <p>You can use rows and columns here to organize your footer content.</p> -->
+            <table id="tablepadding" class="responsive-table centered striped">
+              <thead>
+                
+                <tr>
+                  <!-- <th data-field="prodid">Product Id</th> -->
+                  <th data-field="productname">Product Name</th>
+                  <th data-field="supplier">Supplier</th>
+                  <th data-field="reserved">Reserved</th>
+                  <th data-field="available">Available</th>
+                  <th data-field="price">Item Price</th>
+                </tr>
+              </thead>
+              <tbody id="tubody" >
+               
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+    </main>
+   
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Login</h4>
+      <div class="row">
+          <form  action="javascript:void(0)" class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate" required >
+                <label id="lblemail" for="email" data-error="wrong" data-success="right">Email</label>
+              </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input id="password" type="password" class="validate" required >
+                  <label for="password">Password</label>
+                </div>
+                <button class="btn waves-effect waves-light" id="btnlogin" type="submit" name="action">Login
+                    <i class="material-icons right">send</i>
+                  </button>
+              </form>
+        </div>
+    </div>
+    <!-- <div class="modal-footer"> -->
+      <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+    <!-- </div> -->
+  </div>
+          
+    <!-- </div> -->
+    <!-- jQuery CDN -->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Materialize JS CDN -->
+    <script src="js/index.js" ></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+      var Admin={
+        email:'hamza@gmail.com',
+        pass:'hamza123'
+      }
+      var lblemail=document.querySelector('#lblemail');
+      var email=document.querySelector('#email').value='hamza@gmail.com';
+      var pass=document.querySelector('#password').value='hamza123';
+      var btnlogin=document.querySelector('#btnlogin');
+          btnlogin.addEventListener('click',()=>{
+            if(Admin.email == email  && Admin.pass == pass){
+              window.location.replace('Admin.html');
+            }
+            // lblemail.setAttribute('data-error','Wrong email');
+            return;
+          })
+
+
+      $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    
+    $('select').material_select();
+  });
+      $("document").ready(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+             window.addEventListener("load", function () {
+                 navigator.serviceWorker.register("/serw.js").then(() => {
+                     console.log("Service worker register")
+                 })
+                 .catch((eerr) => {
+                     console.log("ERROR: to register service worker",eerr);
+                 })
+             })
+ 
+         }
+ </script>
+  </body>
+</html>

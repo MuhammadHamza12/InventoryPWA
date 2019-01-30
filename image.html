@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="file" id="i_file" value=""> 
+<input type="button" id="i_submit" value="Submit">
+    <br>
+<img src="" width="200" style="display:none;" />
+
+    <!-- <input type="file" id="fileimg" > 
+    <input type="button"  onclick="inpputfile()" value="upload">
+    <div id="display">
+    </div> -->
+<script>
+var file=document.querySelector('#i_file');
+$('#i_file').change( function(event) {
+    $("img").fadeIn("fast").attr('src',URL.createObjectURL(
+    event.target.files[0]));
+    console.log(event.target.files)
+});
+
+    function show_image(src, width='100px', height='100px', alt='#img'){
+    var divb=document.querySelector('#display');
+    var img = document.createElement("img");
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+
+    // This next line will just add it to the <body> tag
+    divb.appendChild(img);
+}
+function inpputfile(){
+    var filename=document.getElementById('fileimg').value;
+     console.log(filename);
+    show_image(filename)
+}
+</script>
+</body>
+
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Inventroy Management</title>
+    <!-- animated Css -->
+    <link rel="stylesheet" href="css/animated.css">
+      <!-- Material Icon CDN -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize CSS CDN -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Your custom styles -->
+      <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <!-- Used as an example only to position the footer at the end of the page.
+    You can delete these styles or move it to your custom css file -->
+    <script>
+       window.onload=function(){
+               setTimeout(()=>{
+                   document.querySelector('#loader').remove();
+                  //  document.querySelector('#loader').style.position='absolute';
+                document.querySelector('#head').style.visibility='visible';      
+                document.querySelector('#main').style.visibility='visible';
+                // document.querySelector('#foot').style.visibility='visible';
+              },1500) 
+       }
+    
+    </script>
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        }
+      main {
+        flex: 1 0 auto;
+      }
+      .mars{
+            margin-bottom: -120px;
+            opacity: 0.4;
+        }
+      .color{
+        background-color: gray;
+      }
+      .textcolor{
+          color: red
+      }
+     .back{
+       background-color: red;
+     }
+     #pad{
+            padding-top: 120px;
+        }
+      .crud{
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+     <!-- <a href="#" class="brand-logo bounceIn animated "><i class="material-icons  ">shopping_basket</i>Product<small class="textcolor  " >'szone</small>  </a>   
+            <div  class="right hide-on-med-and-down">
+            <a class="waves-effect waves-light btn back">Admin</a> -->
+     <div  style="text-align:center;" id="loader">
+          <img class="responsive-img" src="img/load4.gif" alt="#loader" >
+      </div>
+      
+    <header id="head" style="visibility:hidden;" >
+      <nav class="cyan">
+        <div class="nav-wrapper color ">
+            <div class="container">
+                <a href="#" class="brand-logo"><i class="material-icons">person_pin</i>Admin</a>
+                <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                  <!-- <div id="pad" > -->
+                    <li >         
+                        <a class="waves-effect waves-light btn back" id="btnlogout">Logout</a>
+                     
+                    </li>
+                    <!-- </div> -->
+                  </ul>
+                  <ul class="side-nav" id="mobile-menu">
+                    <li>
+                      <div class="userView">
+                        <div class="background mars">
+                          <img class="white-text"src="img/inventory.png" width="280px" height="400px" alt="">
+                        </div>
+                      </div>
+                    </li>
+                    <li>  
+                        <a id="btnlogout1" class="waves-effect waves-light btn back">Logout</a>
+                      </li>  
+                </ul>
+              </div>
+              
+            </div>
+          </nav>
+          
+        </header>
+        <main id="main" style="visibility:hidden;" >
+          <!-- Your content here -->
+      <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="fixed-action-btn toolbar">
+                    <a class="btn btn-floating btn-large cyan pulse">
+                              <!-- <i class="large material-icons">mode_edit</i> -->
+                       <div class="crud" >
+                              CRUD
+                            </div>
+                            </a>
+                    <ul>
+                      <li class="waves-effect waves-light"><a class="modal-trigger" href="#modal1"><i class="material-icons">add_circle</i>Add</a></li>
+                      <li class="waves-effect waves-light"><a class="modal-trigger"  href="#delete"><i class="material-icons">delete</i>Delete Product</a></li>
+                      <li class="waves-effect waves-light"><a class="modal-trigger"  href="#modal3"><i class="material-icons">system_update_alt</i>Update Product</a></li>
+                      <li class="waves-effect waves-light"><a id="btndeleteall" ><i class="material-icons">delete_forever</i>Delete All</a></li>
+                    </ul>
+                  </div>
+            <table class="responsive-table centered striped">
+              <thead>
+                <tr>
+                  <th data-field="productid">Product Id</th>
+                  <th data-field="productname">Product Name</th>
+                  <th data-field="supplier">Supplier</th>
+                  <th data-field="reserved">Reserved</th>
+                  <th data-field="available">Available</th>
+                  <th data-field="price">Item Price</th>
+                </tr>
+              </thead>
+              <tbody id="tabody" >
+                
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+    </main>
+  
+    <!--Modal for update-->
+    <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Update Product</h4>
+      
+      <div class="row">
+          <form id="formlable2" action="javascript:void(0)" class="col s12">
+              <div class="row">
+                  <div class="input-field col s12">
+                      <select id="uselect" required='true' >
+                        <option value="0" disabled selected>Choose your option</option>
+                        
+                      </select>
+                      <label>Select Id</label>
+                    </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input id="uprodid" placeholder="Product id" type="number" class="validate" disabled >
+                    <!-- <label for="sup">Product Id</label> -->
+                  </div>
+              </div>
+  
+            <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Product name" id="uproductname" type="text" class="validate" required >
+                  <!-- <label for="pro" data-error="wrong" data-success="right">Product name</label> -->
+                </div>
+                </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input placeholder="Suplier"  id="usupplier" type="text" class="validate" required >
+                    <!-- <label for="sup">Suplier</label> -->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input id="ureserve" placeholder="Reserved" type="number" class="validate" required >
+                    <!-- <label for="reser" data-error="wrong" data-success="right">Reserved</label> -->
+                  </div> 
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Available" id="uavail" type="number" class="validate" required >
+                  <!-- <label for="ref" data-error="wrong" data-success="right">Available</label> -->
+                </div> 
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <input placeholder="Item Price" id="uitemprice" type="number" class="validate" required >
+                <!-- <label for="ref" data-error="wrong" data-success="right">Item Price</label> -->
+              </div> 
+        </div>
+  
+                  <button id="btnupdate" class="btn waves-effect waves-light" type="submit" name="action">Update 
+                      <i class="material-icons">system_update_alt</i>
+                    </button>
+                </form>
+      </div>
+    </div>
+    <!-- <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div> -->
+  </div>   
+    
+
+    <!-- Modal for delete  -->
+    <div id="delete" class="modal">
+        <div class="modal-content">
+          <h4>Delete Product</h4>
+          <!-- <div class="row">
+              <div class="input-field col s12">
+                  <select id="dselect" >
+                    <option value="" disabled selected>Select id</option>
+                    
+                  </select>
+                  <label>Select id</label>
+                </div>
+          </div> not working -->
+          <div class="input-field col s12" >
+              <select id="selectbox" >
+                <option value=""  disabled selected>Choose id</option>
+              </select>
+              <label>Materialize Select</label>
+            </div>
+          
+          <div class="row">
+              <form id="formlable" action="javascript:void(0)" class="col s12">
+                  <div class="row">
+                      <div class="input-field col s12">
+                        <input placeholder="Product id" id="dprodid" type="number" class="validate" disabled>
+                        <!-- <label for="ref" data-error="wrong" data-success="right">Product id</label> -->
+                      </div> 
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="dproductname" type="text" class="validate" placeholder="Product name" disabled >
+                    <!-- <label for="pro" data-error="wrong" data-success="right">Product name</label> -->
+                  </div>
+                  </div>
+                  
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="Suplier" id="dsupplier" type="text" class="validate" disabled >
+                      <!-- <label for="sup">Suplier</label> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                      <input id="dreserve" placeholder="Reserved" type="number" class="validate" disabled >
+                      <!-- <label for="reser" data-error="wrong" data-success="right">Reserved</label> -->
+                    </div> 
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <input id="davail" type="number" placeholder="Available" class="validate" disabled >
+                    <!-- <label for="ref" data-error="wrong" data-success="right">Available</label> -->
+                  </div> 
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <!-- <label for="ref" data-error="wrong" data-success="right">Item Price</label> -->
+                  <input id="ditemprice" type="number" placeholder="Item Price" class="validate" disabled >
+                </div> 
+          </div>
+          
+    
+                    <button class="btn waves-effect waves-light" id="btndelete"  type="submit" name="action">Delete 
+                        <i class="material-icons">delete</i>
+                    </button>
+                  </form>
+            </div>
+        
+          </div>
+        <!-- <div class="modal-footer"> -->
+          <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+        <!-- </div> -->
+      </div>
+  
+  
+  
+  
+    <!-- Modal for Add -->
+  <div id="modal1" class="modal">
+
+    <div class="modal-content">
+      <h4>Add Product</h4>
+      <div class="row">
+          <form id="addsubmit"  action="javascript:void(0)" class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="productname" type="text" class="validate" required >
+                <label for="pro" data-error="wrong" data-success="right">Product name</label>
+              </div>
+              </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input id="supplier" type="text" class="validate" required >
+                  <label for="sup">Suplier</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input id="reserve" type="number" class="validate" required >
+                  <label for="reser" data-error="wrong" data-success="right">Reserved</label>
+                </div> 
+          </div>
+          <div class="row">
+              <div class="input-field col s12">
+                <input id="avail" type="number" class="validate" required >
+                <label for="ref" data-error="wrong" data-success="right">Available</label>
+              </div> 
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              <input id="itemprice" type="number" class="validate" required >
+              <label for="ref" data-error="wrong" data-success="right">Item Price</label>
+            </div> 
+      </div>
+     
+
+                <button class="btn waves-effect waves-light" type="submit" href=""  name="action">Add 
+                    <i class="material-icons right">send</i>
+                </button>
+              </form>
+        </div>
+    </div>
+    <!-- <div class="modal-footer"> -->
+      <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a> -->
+    <!-- </div> -->
+  </div>
+   
+  
+
+
+    <!-- </div> -->
+    <!-- jQuery CDN -->
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Materialize JS CDN -->
+    <script src="js/myjs.js" ></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+     
+      $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    $('select').material_select();
+  });
+        
+      $("document").ready(function(){
+        $(".button-collapse").sideNav();
+      });
+    </script>
+  </body>
+</html>
